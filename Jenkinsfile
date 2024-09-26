@@ -4,6 +4,11 @@ pipeline {
         booleanParam(name: "RUN_INTEGRATION_TESTS", defaultValue: true)
     }
     stages {
+        stage('Prepare') {
+            steps {
+                sh 'chmod +x ./mvnw'
+            }
+        }
         stage('Test') {
             parallel {
                 stage('Unit Tests') {
